@@ -41,8 +41,21 @@ class Manufacturer(object):
 		self.factory_inv = []
 		self.margin = margin
 
-	def build_bike(self,model):   
+	def build_bike(self,model):  
 		self.factory_inv.append(model)
+
+	def print_factory_inv(self):                # Example of call: schwinn.print_factory_inv()
+		print 'Current ' + self.name + ' inventory:'
+		for i in range(0,len(self.factory_inv)):
+ 			print self.factory_inv[i].name
+		print '*******************************'		
+
+	def pop_factory_inv(self,model_to_pop):
+		self.model_to_pop = model_to_pop
+		factory_index = self.factory_inv.index(model_to_pop)
+		self.factory_inv.pop(factory_index)
+
+
 
 schwinn = Manufacturer('Schwinn',1.2)   # Create 2 manufacturers
 trek = Manufacturer('Trek',1.4)
@@ -54,6 +67,8 @@ schwinn.build_bike(schwinn_b)
 trek.build_bike(trek_a)  # Add 3 bike models for trek
 trek.build_bike(trek_c)
 trek.build_bike(trek_b)
+
+## schwinn.print_factory_inv()
 
 # for i in range(0,len(schwinn.factory_inv)):
 # 	print schwinn.factory_inv[i].name
@@ -69,6 +84,10 @@ class BikeShop(object):                     # Make Bicycle Shop
 
 	def buy_bike(self,model):
 		self.bike_inv.append(model)
+		self.pop_factory_inv(model)
+	
+	# def pop_bike(self,model):
+	# 	self.pop_factory_inv(model)
 
 summitcity = BikeShop('Summit City',1.2) # BikeShop created
 
@@ -76,16 +95,24 @@ summitcity.buy_bike(schwinn_a)
 summitcity.buy_bike(schwinn_b)
 summitcity.buy_bike(schwinn_c)
 
-model_to_buy = schwinn_b
-factory_index = schwinn.factory_inv.index(model_to_buy)
-print factory_index
-print schwinn.factory_inv[factory_index].name
-
+# print 'schwinn inventory before:'
+# for i in range(0,len(schwinn.factory_inv)):
+#  	print schwinn.factory_inv[i].name
+# print '**********'
+# model_to_buy = schwinn_b
+# factory_index = schwinn.factory_inv.index(model_to_buy)
+# # print schwinn.factory_inv[factory_index].name
+# # print schwinn.factory_inv[factory_index].name
+# schwinn.factory_inv.pop(factory_index)
+# print schwinn.factory_inv[factory_index].name
 
 # print summitcity.bike_inv[inv_index].weight
 # summitcity.bike_inv.pop(inv_index)
 # print summitcity.bike_inv[0].name
+schwinn.print_factory_inv()
 
-# for i in range(0,len(summitcity.bike_inv)):
-# 	print summitcity.bike_inv[i].name
+summitcity.buy_bike(schwinn_b)
 
+schwinn.pop_factory_inv(schwinn_b)
+
+schwinn.print_factory_inv()
