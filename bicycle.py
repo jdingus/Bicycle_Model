@@ -26,6 +26,7 @@ class Bike_Model(object):
 		self.wheel = Wheel
 		self.frame = Frame
 		self.cost = 2 * Wheel.cost + Frame.cost	
+		self.weight = Wheel.weight + Frame.weight
 
 schwinn_a = Bike_Model('Schwinn A-2100','Schwinn',wheel_1, frame_1)
 schwinn_b = Bike_Model('Schwinn B','Schwinn',wheel_2, frame_1)
@@ -47,15 +48,15 @@ schwinn = Manufacturer('Schwinn',1.2)   # Create 2 manufacturers
 trek = Manufacturer('Trek',1.4)
 
 schwinn.build_bike(schwinn_a)  # Add 3 bike models for schwinn
-schwinn.build_bike(schwinn_b)
 schwinn.build_bike(schwinn_c)
+schwinn.build_bike(schwinn_b)
 
 trek.build_bike(trek_a)  # Add 3 bike models for trek
-trek.build_bike(trek_b)
 trek.build_bike(trek_c)
+trek.build_bike(trek_b)
 
-for i in range(0,len(schwinn.factory_inv)):
-	print schwinn.factory_inv[i].name
+# for i in range(0,len(schwinn.factory_inv)):
+# 	print schwinn.factory_inv[i].name
 
 # print schwinn.factory_inv
 # print trek.factory_inv
@@ -75,5 +76,16 @@ summitcity.buy_bike(schwinn_a)
 summitcity.buy_bike(schwinn_b)
 summitcity.buy_bike(schwinn_c)
 
-for i in range(0,len(summitcity.bike_inv)):
-	print summitcity.bike_inv[i].name
+model_to_buy = schwinn_b
+factory_index = schwinn.factory_inv.index(model_to_buy)
+print factory_index
+print schwinn.factory_inv[factory_index].name
+
+
+# print summitcity.bike_inv[inv_index].weight
+# summitcity.bike_inv.pop(inv_index)
+# print summitcity.bike_inv[0].name
+
+# for i in range(0,len(summitcity.bike_inv)):
+# 	print summitcity.bike_inv[i].name
+
