@@ -27,7 +27,7 @@ class Bike_Model(object):
 		self.frame = Frame
 		self.cost = 2 * Wheel.cost + Frame.cost	
 
-schwinn_a = Bike_Model('Schwinn A','Schwinn',wheel_1, frame_1)
+schwinn_a = Bike_Model('Schwinn A-2100','Schwinn',wheel_1, frame_1)
 schwinn_b = Bike_Model('Schwinn B','Schwinn',wheel_2, frame_1)
 schwinn_c = Bike_Model('Schwinn C','Schwinn',wheel_2, frame_3)
 trek_a = Bike_Model('Trek A','Trek',wheel_3, frame_3)
@@ -46,18 +46,16 @@ class Manufacturer(object):
 schwinn = Manufacturer('Schwinn',1.2)   # Create 2 manufacturers
 trek = Manufacturer('Trek',1.4)
 
-schwinn.build_bike('schwinn_a')  # Add 3 bike models for schwinn
-schwinn.build_bike('schwinn_b')
-schwinn.build_bike('schwinn_c')
+schwinn.build_bike(schwinn_a.name)  # Add 3 bike models for schwinn
+schwinn.build_bike(schwinn_b.name)
+schwinn.build_bike(schwinn_c.name)
+
+trek.build_bike(trek_a.name)  # Add 3 bike models for trek
+trek.build_bike(trek_b.name)
+trek.build_bike(trek_c.name)
 
 print schwinn.factory_inv
-
-trek.build_bike('trek_a')  # Add 3 bike models for trek
-trek.build_bike('trek_b')
-trek.build_bike('trek_c')
-
 print trek.factory_inv
-
 
 class BikeShop(object):                     # Make Bicycle Shop
 	def __init__(self,name,markup):
