@@ -27,35 +27,39 @@ class Bike_Model(object):
 		self.frame = Frame
 		self.cost = 2 * Wheel.cost + Frame.cost	
 
-bike_1 = Bike_Model('Schwinn A','Schwinn',wheel_1, frame_1)
-bike_2 = Bike_Model('Trek A','Trek',wheel_3, frame_3)
-bike_3 = Bike_Model('Schwinn B','Schwinn',wheel_2, frame_1)
-bike_4 = Bike_Model('Trek B','Trek',wheel_1, frame_3)
-bike_5 = Bike_Model('Schwinn C','Schwinn',wheel_2, frame_3)
-bike_6 = Bike_Model('Trek C','Trek',wheel_1, frame_3)
+schwinn_a = Bike_Model('Schwinn A','Schwinn',wheel_1, frame_1)
+schwinn_b = Bike_Model('Schwinn B','Schwinn',wheel_2, frame_1)
+schwinn_c = Bike_Model('Schwinn C','Schwinn',wheel_2, frame_3)
+trek_a = Bike_Model('Trek A','Trek',wheel_3, frame_3)
+trek_b = Bike_Model('Trek B','Trek',wheel_1, frame_3)
+trek_c = Bike_Model('Trek C','Trek',wheel_1, frame_3)
 
 class Manufacturer(object):
 	def __init__(self,name,margin):
 		self.name = name
-		self.models = []
+		self.factory_inv = []
 		self.margin = margin
 
-	def add_model(self,model):
-		self.models.append(model)
+	def build_bike(self,model):   
+		self.factory_inv.append(model)
 
-schwinn = Manufacturer('Schwinn',1.2)   # Create 2 manufacturers required
+schwinn = Manufacturer('Schwinn',1.2)   # Create 2 manufacturers
 trek = Manufacturer('Trek',1.4)
 
-schwinn.add_model(bike_1)  # Add 3 bike models for schwinn
-schwinn.add_model(bike_2) 
-schwinn.add_model(bike_3)
+schwinn.build_bike('schwinn_a')  # Add 3 bike models for schwinn
+schwinn.build_bike('schwinn_b')
+schwinn.build_bike('schwinn_c')
 
-trek.add_model(bike_4)  # Add 3 bike models for trek
-trek.add_model(bike_5) 
-trek.add_model(bike_6)
+print schwinn.factory_inv
 
-# Make Bicycle Shop
-class BikeShop(object):
+trek.build_bike('trek_a')  # Add 3 bike models for trek
+trek.build_bike('trek_b')
+trek.build_bike('trek_c')
+
+print trek.factory_inv
+
+
+class BikeShop(object):                     # Make Bicycle Shop
 	def __init__(self,name,markup):
 		self.name = name
 		self.markup = markup # Markup Rate from wholesale price
@@ -65,20 +69,3 @@ class BikeShop(object):
 		self.models.append(model)
 
 summitcity = BikeShop('Summit City',1.2)
-summitcity.add_bike(bike_1)
-summitcity.add_bike(bike_2)
-summitcity.add_bike(bike_3)
-summitcity.add_bike(bike_4)
-summitcity.add_bike(bike_5)
-summitcity.add_bike(bike_6)
-
-for model in summitcity.models:
-	print "Model: " + str(model.name) + " *** " + "Cost: " + str(model.cost)
-# 	def calc_retail(self,)
-
-
-# for models in schwinn.models:
-# 	i=models.cost
-# 	i+=models.cost
-# print "Sum of all the models is $" + str(i)
-# print "With tax that would be: $" + str(i*1.070)
