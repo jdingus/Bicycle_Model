@@ -46,24 +46,34 @@ class Manufacturer(object):
 schwinn = Manufacturer('Schwinn',1.2)   # Create 2 manufacturers
 trek = Manufacturer('Trek',1.4)
 
-schwinn.build_bike(schwinn_a.name)  # Add 3 bike models for schwinn
-schwinn.build_bike(schwinn_b.name)
-schwinn.build_bike(schwinn_c.name)
+schwinn.build_bike(schwinn_a)  # Add 3 bike models for schwinn
+schwinn.build_bike(schwinn_b)
+schwinn.build_bike(schwinn_c)
 
-trek.build_bike(trek_a.name)  # Add 3 bike models for trek
-trek.build_bike(trek_b.name)
-trek.build_bike(trek_c.name)
+trek.build_bike(trek_a)  # Add 3 bike models for trek
+trek.build_bike(trek_b)
+trek.build_bike(trek_c)
 
-print schwinn.factory_inv
-print trek.factory_inv
+for i in range(0,len(schwinn.factory_inv)):
+	print schwinn.factory_inv[i].name
+
+# print schwinn.factory_inv
+# print trek.factory_inv
 
 class BikeShop(object):                     # Make Bicycle Shop
 	def __init__(self,name,markup):
 		self.name = name
 		self.markup = markup # Markup Rate from wholesale price
-		self.models = []
+		self.bike_inv = []
 
-	def add_bike(self,model):
-		self.models.append(model)
+	def buy_bike(self,model):
+		self.bike_inv.append(model)
 
-summitcity = BikeShop('Summit City',1.2)
+summitcity = BikeShop('Summit City',1.2) # BikeShop created
+
+summitcity.buy_bike(schwinn_a)
+summitcity.buy_bike(schwinn_b)
+summitcity.buy_bike(schwinn_c)
+
+for i in range(0,len(summitcity.bike_inv)):
+	print summitcity.bike_inv[i].name
