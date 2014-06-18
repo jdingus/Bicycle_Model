@@ -25,7 +25,7 @@ class Bike_Model(object):
 		self.manufacturer = manufacturer
 		self.wheel = Wheel
 		self.frame = Frame
-		self.cost = 2 * Wheel.cost + Frame.cost	
+		self.manu_cost = 2 * Wheel.cost + Frame.cost	
 		self.weight = Wheel.weight + Frame.weight
 
 schwinn_a = Bike_Model('Schwinn A-2100','Schwinn',wheel_1, frame_1)
@@ -36,10 +36,10 @@ trek_b = Bike_Model('Trek B','Trek',wheel_1, frame_3)
 trek_c = Bike_Model('Trek C','Trek',wheel_1, frame_3)
 
 class Manufacturer(object):
-	def __init__(self,name,margin):
+	def __init__(self,name,markup):
 		self.name = name
 		self.factory_inv = []
-		self.margin = margin
+		self.markup = markup
 
 	def build_bike(self,model):  
 		self.factory_inv.append(model)
@@ -54,6 +54,10 @@ class Manufacturer(object):
 		# self.model = model
 	 	factory_index = self.factory_inv.index(model)
 	 	self.factory_inv.pop(factory_index)
+
+	def calc_wholesale_cost(self,model): # Calculates wholesale price
+		wholesale_cost = model.manu_cost*self.markup
+		print wholesale_cost
 
 schwinn = Manufacturer('Schwinn',1.2)   # Create 2 manufacturers
 trek = Manufacturer('Trek',1.4)
@@ -86,11 +90,23 @@ class BikeShop(object):                     # Make Bicycle Shop
 		shop_index = self.shop_inv.index(model)
 	 	self.shop_inv.pop(shop_index)	
 
+	def calc_retail_cost(self,model): # Calculates retail price
+		# import Manufacturer calc_wholesale_cost
+		retail_cost = Manufacturer.calc_wholesale_cost.wholesale_cost.model*self.markup
+		print retail_cost
+
 summitcity = BikeShop('Summit City',1.2) # BikeShop created
 
 summitcity.buy_bike(schwinn_a)
 summitcity.buy_bike(schwinn_b)
 summitcity.buy_bike(schwinn_c)
+
+summitcity.calc_retail_cost(schwinn_a)
+summitcity.calc_retail_cost(schwinn_b)
+summitcity.calc_retail_cost(schwinn_c)
+
+raise SystemExit
+
 
 schwinn.print_factory_inv()
 schwinn.pop_factory_inv(schwinn_a)
