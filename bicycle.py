@@ -55,8 +55,6 @@ class Manufacturer(object):
 	 	factory_index = self.factory_inv.index(model)
 	 	self.factory_inv.pop(factory_index)
 
-
-
 schwinn = Manufacturer('Schwinn',1.2)   # Create 2 manufacturers
 trek = Manufacturer('Trek',1.4)
 
@@ -67,13 +65,6 @@ schwinn.build_bike(schwinn_b)
 trek.build_bike(trek_a)  # Add 3 bike models for trek
 trek.build_bike(trek_c)
 trek.build_bike(trek_b)
-
-#schwinn.print_factory_inv()
-
-
-
-# print schwinn.factory_inv
-# print trek.factory_inv
 
 class BikeShop(object):                     # Make Bicycle Shop
 	def __init__(self,name,markup):
@@ -95,19 +86,11 @@ class BikeShop(object):                     # Make Bicycle Shop
 		shop_index = self.shop_inv.index(model)
 	 	self.shop_inv.pop(shop_index)	
 
-
-	# def pop_factory_inv(self,model):
-	#  	self.pop_factory_inv(model)
-
 summitcity = BikeShop('Summit City',1.2) # BikeShop created
 
 summitcity.buy_bike(schwinn_a)
 summitcity.buy_bike(schwinn_b)
 summitcity.buy_bike(schwinn_c)
-
-
-# for i in range(0,len(schwinn.factory_inv)):
-# 	print schwinn.factory_inv[i].name
 
 schwinn.print_factory_inv()
 schwinn.pop_factory_inv(schwinn_a)
@@ -119,30 +102,3 @@ summitcity.print_shop_inv()
 summitcity.pop_shop_inv(schwinn_a)
 summitcity.print_shop_inv()
 
-# for i in range(0,len(trek.factory_inv)):
-# 	print trek.factory_inv[i].name
-
-
-
-# # print 'schwinn inventory before:'
-# # for i in range(0,len(schwinn.factory_inv)):
-# #  	print schwinn.factory_inv[i].name
-# # print '**********'
-# # model_to_buy = schwinn_b
-# # factory_index = schwinn.factory_inv.index(model_to_buy)
-# # # print schwinn.factory_inv[factory_index].name
-# # # print schwinn.factory_inv[factory_index].name
-# # schwinn.factory_inv.pop(factory_index)
-# # print schwinn.factory_inv[factory_index].name
-
-# # print summitcity.bike_inv[inv_index].weight
-# # summitcity.bike_inv.pop(inv_index)
-# # print summitcity.bike_inv[0].name
-
-# schwinn.print_factory_inv()
-
-# # summitcity.buy_bike(schwinn_b)
-
-# schwinn.factory_inv.pop(schwinn_b)
-
-# schwinn.print_factory_inv()
