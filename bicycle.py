@@ -41,8 +41,9 @@ class DesignModel(object):
 		self.markup = factory.markup	
 		self.wheel = Wheel
 		self.frame = Frame
-		self.manu_cost = 2 * Wheel.cost + Frame.cost	
 		self.weight = Wheel.weight + Frame.weight
+	self.manu_cost = 2 * Wheel.cost + Frame.cost	
+
 
 	def S_build_bike(self):
 		schwinn.factory_inv.append(str(self.model_name))
@@ -50,6 +51,7 @@ class DesignModel(object):
 	def T_build_bike(self): 
 		trek.factory_inv.append(str(self.model_name))
 
+<<<<<<< HEAD
 schwinn_a = DesignModel('Schwinn A-2100',schwinn,wheel_1, frame_1)
 schwinn_b = DesignModel('Schwinn B',schwinn,wheel_2, frame_1)
 schwinn_c = DesignModel('Schwinn C',schwinn,wheel_2, frame_3)
@@ -62,6 +64,15 @@ schwinn_b.S_build_bike()
 schwinn_c.S_build_bike()
 
 # print schwinn.factory_inv
+=======
+class Manufacturer(object):
+	def __init__(self,name,markup):
+		self.name = name
+		self.factory_inv = []
+		self.markup = markup
+		self.wholesale_cost = self.manu_cost
+		# self.wholesale_cost = Bike_Model.manu_cost*markup
+>>>>>>> 843d02bdb494da10a34f21ab60ba030f9582b44f
 
 trek_a.T_build_bike()
 trek_b.T_build_bike()
@@ -71,7 +82,12 @@ trek_c.T_build_bike()
 
 schwinn.print_factory_inv()
 
+<<<<<<< HEAD
 raise SystemExit
+=======
+	def calc_wholesale_cost(self,model): # Calculates wholesale price
+		print wholesale_cost
+>>>>>>> 843d02bdb494da10a34f21ab60ba030f9582b44f
 
 
 # 	def print_factory_inv(self):                # Example of call: schwinn.print_factory_inv()
@@ -85,6 +101,7 @@ raise SystemExit
 # 	 	factory_index = self.factory_inv.index(model)
 # 	 	self.factory_inv.pop(factory_index)
 
+<<<<<<< HEAD
 # 	def calc_wholesale_cost(self,model): # Calculates wholesale price
 # 		wholesale_cost = model.manu_cost*self.markup
 # 		print wholesale_cost
@@ -115,15 +132,49 @@ raise SystemExit
 # 		for i in range(0,len(self.shop_inv)):
 #  			print self.shop_inv[i].name
 # 		print '*******************************'	
+=======
+print schwinn_a.manu_cost
+print schwinn_a.wholesale_cost
+
+raise SystemExit 
+
+schwinn.calc_wholesale_cost(schwinn_a)
+
+raise SystemExit
+
+class BikeShop(object):                     # Make Bicycle Shop
+	def __init__(self,name,markup):
+		self.name = name
+		self.markup = markup # Markup Rate from wholesale price
+		self.shop_inv = []
+
+	def buy_bike(self,model):
+		self.shop_inv.append(model)
+		# self.pop_factory_inv(model)
+
+	def print_shop_inv(self):               
+		print 'Current ' + self.name + ' inventory:'
+		for i in range(0,len(self.shop_inv)):
+ 			print self.shop_inv[i].name
+		print '*******************************'	
+>>>>>>> 843d02bdb494da10a34f21ab60ba030f9582b44f
 	
 # 	def pop_shop_inv(self,model): # Takes passed in BikeShop and pops model from list
 # 		shop_index = self.shop_inv.index(model)
 # 	 	self.shop_inv.pop(shop_index)	
 
+<<<<<<< HEAD
 # 	def calc_retail_cost(self,model): # Calculates retail price
 # 		# import Manufacturer calc_wholesale_cost
 # 		retail_cost = Manufacturer.calc_wholesale_cost.wholesale_cost.model*self.markup
 # 		print retail_cost
+=======
+	def calc_retail_cost(self,model): # Calculates retail price
+		# import Manufacturer calc_wholesale_cost
+		wholesale_cost = Manufacturer.wholesale_cost
+		retail_cost = wholesale_cost*self.markup
+		print retail_cost
+>>>>>>> 843d02bdb494da10a34f21ab60ba030f9582b44f
 
 # summitcity = BikeShop('Summit City',1.2) # BikeShop created
 
