@@ -73,30 +73,4 @@ billy.cust_buy_bike(summitcity,trek_c)
 
 summitcity.print_weight()
 
-# print billy.budget
 
-raise SystemExit
-
-# Buy particular bike models at BikeShop takes inventory from Factory
-summitcity.s_buy_bike(schwinn_a)
-summitcity.s_buy_bike(schwinn_c)
-summitcity.s_buy_bike(schwinn_b)
-summitcity.t_buy_bike(trek_a)
-summitcity.t_buy_bike(trek_c)
-summitcity.t_buy_bike(trek_b)
-
-# print summitcity.shop_inv
-
-
-summitcity.sell_bike(schwinn_b,billy)
-print schwinn.factory_inv
-print summitcity.shop_inv
-summitcity.sell_bike(schwinn_a,ray)
-print schwinn.factory_inv
-print summitcity.shop_inv
-summitcity.sell_bike(schwinn_c,wanda)
-print schwinn.factory_inv
-print summitcity.shop_inv
-# summitcity.sell_bike(schwinn_a)
-# summitcity.sell_bike(trek_a)
-# print summitcity.shop_inv
