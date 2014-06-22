@@ -31,46 +31,44 @@ trek.build_bike(trek_a)
 trek.build_bike(trek_b)
 trek.build_bike(trek_c)
 
-# trek.print_factory_inv()
-# schwinn.print_factory_inv()
+# print trek_a.factory.inv[0].name
 
 # Build a BikeShop ** name,markup
 summitcity = BikeShop('Summit City',1.2)
 
 # Have shop buy some bike models
-summitcity.shop_buy_bike(schwinn_a)
-summitcity.shop_buy_bike(schwinn_b)
-summitcity.shop_buy_bike(schwinn_c)
+summitcity.buy_bike(schwinn_a)
+summitcity.buy_bike(schwinn_b)
+summitcity.buy_bike(schwinn_c)
 
-# summitcity.print_inventory()
-
-# schwinn.print_factory_inv()
-
-summitcity.shop_buy_bike(trek_a)
-summitcity.shop_buy_bike(trek_b)
-summitcity.shop_buy_bike(trek_c)
-
-# summitcity.print_inventory()
-
-# trek.print_factory_inv()
+summitcity.buy_bike(trek_a)
+summitcity.buy_bike(trek_b)
+summitcity.buy_bike(trek_c)
 
 # Have shop sell a bike model
-# summitcity.shop_sell_bike(trek_a)
-
-# summitcity.print_inventory()
-
-# raise SystemExit
+# summitcity.sell_bike(trek_a)
 
 # Make some customers with a 'name, budget'
 billy = Customer('Billy',1000) # Make Customer ** Name, Budget
 ray = Customer('Ray',500) # Make Customer ** Name, Budget
 wanda = Customer('Wanda',200) # Make Customer ** Name, Budget
 
-# Customer buys a bike
+summitcity.print_name_wt()
 
+# Customer visits a store and gets added to there cust_list
+billy.visit_store(summitcity)
+ray.visit_store(summitcity)
+wanda.visit_store(summitcity)
 
-billy.cust_buy_bike(summitcity,trek_c)
+# Print names of all the customers and the bikes they can afford based on there budget
+summitcity.print_customer_report()
 
-summitcity.print_weight()
+summitcity.print_inv()
 
+billy.buy_bike(summitcity,trek_c)
+ray.buy_bike(summitcity,schwinn_b)
+wanda.buy_bike(summitcity,schwinn_a)
 
+summitcity.print_inv()
+
+print summitcity.name + " Profit: $" + str(summitcity.profit)
